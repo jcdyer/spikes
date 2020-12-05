@@ -27,7 +27,6 @@
                            String::from("that"),
                            String::from("the other"),
                 ]);
-                assert!(false);
             }
         }
     }

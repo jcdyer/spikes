@@ -1,6 +1,7 @@
 use std::io::{BufRead, Cursor};
+
 fn main() {
-    let x = std::io::BufReader::new(std::io::Cursor::new("a b c\nd e f\n"));
+    let x = std::io::BufReader::new(Cursor::new("a b c\nd e f\n"));
     let v = x
         .lines()
         .map(|l| l.unwrap())
@@ -49,7 +50,7 @@ impl<R: Sized + BufRead> WordsReader for R {
                         }
                     }
                 }
-                Err(utf8_err) => {
+                Err(_utf8_err) => {
                     panic!("Need to handle incomplete utf8")
                 }
             };
@@ -91,7 +92,7 @@ where
 #[cfg(test)]
 mod tests {
     use super::*;
-
+    use std::io::Cursor;
 
     #[test]
     fn empty_reader() {
@@ -102,7 +103,7 @@ mod tests {
     #[test]
     fn one_word() {
         let r = Cursor::new("one");
-        assert_eq!(ok_collect(r.words()), ["one"].into_iter().map(|&s| String::from(s)).collect::<Vec<_>>());
+        assert_eq!(ok_collect(r.words()), ["one"].iter().map(|&s| String::from(s)).collect::<Vec<_>>());
     }
 
     fn ok_collect(from: impl Iterator<Item=std::io::Result<String>>) -> Vec<String> {

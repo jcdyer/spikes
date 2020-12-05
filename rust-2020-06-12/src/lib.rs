@@ -23,7 +23,6 @@ pub mod bignum {
     pub struct U(Vec<u8>);
 
     impl U {
-
         /// normalize strips trailing 0 bytes from the bignum::U.  All (safe)
         /// public functions must leave the bignum::U in normalized form.
         fn normalize(&mut self) {
@@ -36,8 +35,12 @@ pub mod bignum {
 
         pub fn try_from_hex(mut number: &str) -> Result<U, Error> {
             let mut v = Vec::with_capacity(number.len() / 2 + 1); // TODO: Check boundary conditions
-            while number.len() > 0 {
-                let offset = if number.len() < 2 { 0 } else { number.len() - 2 };
+            while !number.is_empty() {
+                let offset = if number.len() < 2 {
+                    0
+                } else {
+                    number.len() - 2
+                };
                 let byte = &number[offset..];
                 number = &number[..offset];
                 v.push(u8::from_str_radix(byte, 16).map_err(|_| Error::ConvertError)?);
@@ -57,7 +60,7 @@ pub mod bignum {
         }
 
         pub fn with_capacity(n: usize) -> Self {
-            return Self(Vec::with_capacity(n))
+            Self(Vec::with_capacity(n))
         }
 
         pub fn try_to_u64(&self) -> Option<u64> {
@@ -65,12 +68,11 @@ pub mod bignum {
                 None
             } else {
                 Some(
-                    self.0.iter()
+                    self.0
+                        .iter()
                         .enumerate()
-                        .map(|(place, igit)| {
-                            256u64.pow(place as u32) * (*igit as u64)
-                        })
-                        .sum()
+                        .map(|(place, igit)| 256u64.pow(place as u32) * (*igit as u64))
+                        .sum(),
                 )
             }
         }
@@ -78,7 +80,7 @@ pub mod bignum {
 
     impl Default for U {
         fn default() -> Self {
-            return Self(Vec::new())
+            Self(Vec::new())
         }
     }
 
@@ -107,9 +109,7 @@ pub mod bignum {
 
             let mut carry = false;
             // Create an infinite iterator from other
-            let other_iter = otherbase.into_iter()
-                .copied()
-                .chain(std::iter::repeat(0));
+            let other_iter = otherbase.iter().copied().chain(std::iter::repeat(0));
 
             // Add to each igit of self the corresponding igit of other, carrying ones as needed
             for (this, addend) in self.0.iter_mut().zip(other_iter) {

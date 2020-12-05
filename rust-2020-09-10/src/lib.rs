@@ -1,6 +1,5 @@
-use std::convert::TryInto;
 
-pub fn str_to_u64(mut value: String) -> Option<u64> {
+pub fn str_to_u64(value: String) -> Option<u64> {
     let mut buf = [0; 8];
 
     if value.len() > 8 {
@@ -11,8 +10,11 @@ pub fn str_to_u64(mut value: String) -> Option<u64> {
     }
 }
 
-pub fn u64_as_str<'a>(orig: &'a u64) -> Option<&'a str> {
-    let slice: &[u8; 8] = unsafe { std::mem::transmute(orig) };
+pub fn u64_as_str(orig: &u64) -> Option<&str> {
+    let slice: &[u8; 8] = unsafe {
+        #[allow(clippy::transmute_ptr_to_ptr)]
+        std::mem::transmute(orig)
+    };
     std::str::from_utf8(&*slice)
         .map(|st| st.trim_end_matches('\0'))
         .ok()

@@ -2,12 +2,12 @@ use std::ops::Deref;
 use std::ops::DerefMut;
 
 #[repr(C, align(4096))]
-struct AlignedBuf {
+pub struct AlignedBuf {
     data: [u8; 4096],
 }
 
 impl AlignedBuf {
-    fn new(data: [u8; 4096]) -> AlignedBuf {
+    pub fn new(data: [u8; 4096]) -> AlignedBuf {
         AlignedBuf { data }
     }
 }
@@ -32,7 +32,6 @@ mod tests {
 
     #[test]
     fn is_aligned() {
-        let mut bufs: Vec<Box<AlignedBuf>> = vec![];
         for i in 0..255 {
             let box_ab = Box::new(AlignedBuf::new([i; 4096]));
             let ab_ptr = box_ab.as_ptr();
@@ -40,7 +39,6 @@ mod tests {
             assert_eq!(ab_ptr as usize % 4096, 0);
             //bufs.push(box_ab);
         }
-        panic!("success");
     }
 
     #[test]

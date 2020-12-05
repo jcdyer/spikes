@@ -106,7 +106,7 @@ pub mod auth_user {
     }
 }
 
-fn protected_route(user: user::User) -> Result<&'static str, errors::AccessError> {
+pub fn protected_route(user: user::User) -> Result<&'static str, errors::AccessError> {
     if user.role() == Role::Admin {
         Ok("Authorized")
     } else {
@@ -114,6 +114,6 @@ fn protected_route(user: user::User) -> Result<&'static str, errors::AccessError
     }
 }
 
-fn protected_route_2(user: &auth_user::AdminUser) -> &'static str {
+pub fn protected_route_2(_user: &auth_user::AdminUser) -> &'static str {
     "Authorized"
 }

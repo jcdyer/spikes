@@ -2,7 +2,7 @@
 use serde_json_old::Value as OldValue;
 use serde_json::Value;
 
-fn from_old(val: OldValue) -> Value {
+pub fn from_old(val: OldValue) -> Value {
     match val {
         OldValue::Null => Value::Null,
         OldValue::Bool(b) => Value::Bool(b),

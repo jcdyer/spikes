@@ -2,10 +2,13 @@
 
 #![feature(crate_visibility_modifier, exhaustive_patterns)]
 
+use std::hint::unreachable_unchecked;
+
 
 
 mod never {
     use std::convert::Infallible;
+    #[allow(clippy::unnecessary_wraps)]
     crate fn always() -> Result<i32, Infallible> {
         Ok(42)
     }
@@ -43,9 +46,10 @@ fn main() {
     let Ok(x) = never::always();
     println!("{}", x);
 
-    #[allow(clippy::infallible_destructuring_match)]
+    #[allow(unreachable_patterns, clippy::infallible_destructuring_match)]
     let x = match never::always() {
         Ok(x) => x,
+        _ => unsafe{unreachable_unchecked()},
     };
     println!("{}", x);
 

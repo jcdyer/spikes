@@ -1,10 +1,12 @@
-///
-/// Can I use ? to do non-error-specific .into() calls?
-fn handler(input: &str) -> Result<u64, String> {
+//! Can I use ? to do non-error-specific .into() calls?
+
+#![allow(clippy::try_err)]
+
+pub fn handler(input: &str) -> Result<u64, String> {
     Ok(input.parse::<u64>().map_err(|_| "yo")?)
 }
 
-fn to_u64(byte: u8) -> Result<(), u64> {
+pub fn to_u64(byte: u8) -> Result<(), u64> {
     Err(byte)?;
     unreachable!()
 }

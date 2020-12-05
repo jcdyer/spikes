@@ -15,5 +15,6 @@ pub fn find_nearest(origin: u64, field: &[u64], n: usize) -> Vec<u64> {
 
 #[test]
 fn nearest_are_nearest() {
-    let nearest_half = find_nearest(rand::random(), &std::iter::repeat_with(||rand::random()).take(256).collect::<Vec<_>>(), 128);
+    let nearest_half = find_nearest(rand::random(), &std::iter::repeat_with(rand::random).take(256).collect::<Vec<_>>(), 128);
+    println!("{:?}", nearest_half);
 }
