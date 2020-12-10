@@ -4,6 +4,6 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-func GetId() string {
+func GetID() string {
 	return primitive.NewObjectID().Hex()
 }
