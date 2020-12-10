@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/jcdyer/spikes/go-2020-12-10/go2020"
+	"github.com/jcdyer/spikes/go20201210/go2020"
 )
 
 func main() {

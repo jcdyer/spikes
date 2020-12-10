@@ -1,4 +1,4 @@
-module github.com/jcdyer/spikes/go-2020-12-10
+module github.com/jcdyer/spikes/go20201210
 
 go 1.15
 
