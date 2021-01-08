@@ -57,6 +57,9 @@ func NewWaker(repo Repo, callback func(Object)) *Waker {
 // but I'm not sure how to avoid the race condition between
 // timer.Stop() and timer.Reset() when shortening the timeout
 // if we don't lock.
+//
+// There are some potentially good suggestions at:
+// https://www.reddit.com/r/golang/comments/f16kqy/the_right_way_to_restart_timetimer/
 func (w *Waker) Run() {
 	for {
 		w.mutex.Lock()
