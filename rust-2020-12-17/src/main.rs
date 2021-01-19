@@ -1,4 +1,4 @@
-use std::io::Write;
+use std::{io::Write, thread, time::Duration};
 
 use serde::ser::{
     Serializer,
@@ -29,6 +29,7 @@ fn main() -> anyhow::Result<()> {
     for row in rows {
         seq.serialize_element(&row)?;
         out.lock().write_all(b"\n")?;
+        thread::sleep(Duration::from_millis(500))
     }
     seq.end()?;
     out.lock().write_all(b"\n")?;

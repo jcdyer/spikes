@@ -34,6 +34,8 @@ github.com/inconshreveable/mousetrap v1.0.0/go.mod h1:PxqpIevigyE2G7u3NXJIT2ANyt
 github.com/jcdyer/spikes v1.0.0 h1:WO+YUnBra1tgTUjCj4eaYiL2i8M6U/7Fk5KnmJ2Ltp0=
 github.com/jcdyer/spikes/go20201210 v1.0.1 h1:jf/nYqqg0bOQfKJpbivSkeH8YKX7fxZfXLaTIraP97I=
 github.com/jcdyer/spikes/go20201210 v1.0.1/go.mod h1:VBper6pfI8ht+aTtQGP2vRC6ryT0MIidhfARkrATvys=
+github.com/jcdyer/spikes/go20201210/v2 v2.0.0 h1:MS78r+uFPEEa43XVb75hJ4//DWj4c6DMexpEpPsYcts=
+github.com/jcdyer/spikes/go20201210/v2 v2.0.0/go.mod h1:Y9KuXuqLT3KuDh8l9IQcsuXU+p6CAuol9awJDUShZ6s=
 github.com/jmespath/go-jmespath v0.4.0/go.mod h1:T8mJZnbsbmF+m6zOOFylbeCJqk5+pHWvzYPziyZiYoo=
 github.com/jmespath/go-jmespath/internal/testify v1.5.1/go.mod h1:L3OGu8Wl2/fWfCI6z80xFu9LTZmf1ZRjMHUOPmWr69U=
 github.com/joho/godotenv v1.3.0/go.mod h1:7hK45KPybAkOC6peb+G5yklZfMxEjkZhHbwpqxOKXbg=

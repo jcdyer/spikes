@@ -54,3 +54,16 @@ Type-based access control
 ### rust-2020-12-04b
 
 Depending on two versions of the same crate, and converting serde_json::Value between crate versions.
+
+### rust-2020-12-17
+
+Streaming json serializer
+
+### rust-2020-12-28
+
+Color struct to show non-allocating string modification via display attribute.
+
+### rust-2020-12-29
+
+String interner example from matklad's [call site dependency injection 
+post](https://matklad.github.io/2020/12/28/csdi.html).
