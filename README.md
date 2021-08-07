@@ -67,3 +67,15 @@ Color struct to show non-allocating string modification via display attribute.
 
 String interner example from matklad's [call site dependency injection 
 post](https://matklad.github.io/2020/12/28/csdi.html).
+
+### go-2021-01-09
+
+Waker-based scheduler.
+
+### rust-2021-01-19
+
+2d window iterator.
+
+### rust-2021-07-31
+
+Driving a future without a runtime (with a custom runtime?)
