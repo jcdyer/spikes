@@ -79,3 +79,11 @@ Waker-based scheduler.
 ### rust-2021-07-31
 
 Driving a future without a runtime (with a custom runtime?)
+
+### rust-2021-08-09
+
+Investigating possible issue in ignore crate
+
+### rust-2022-04-22
+
+Create Apply trait for chaining free functions
